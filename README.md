@@ -1,5 +1,7 @@
 # Multi Step Form Tutorial
 
+[Link for the Medium article](https://blog.devgenius.io/create-a-multi-step-form-with-reactjs-322aa97a2968)  
+
 I created this to help me write the Medium article. 
 
 ## Quick Start
