@@ -3,7 +3,7 @@ import { Container, Grid, List, ListItem, ListItemText, Button } from '@material
 
 const Confirmation = ({ prevStep, nextStep, values }) => {
   console.log(values);
-  const { firstName, lastName, email, username, country, levelOfEducation } = values
+  const { firstName, lastName, email, username, country, levelOfEducation, question1, question2 } = values
   const Continue = e => {
     e.preventDefault();
     nextStep();
@@ -35,6 +35,12 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
           </ListItem>
           <ListItem>
             <ListItemText primary="Level of Education" secondary={levelOfEducation}/>
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="Question 1" secondary={question1}/>
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="Question 2" secondary={question2}/>
           </ListItem>
         </List>
 

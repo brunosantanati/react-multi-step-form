@@ -3,6 +3,9 @@ import UserDetails from './UserDetails'
 import PersonalDetails from './PersonalDetails'
 import Confirmation from './Confirmation'
 import Success from './Success'
+//import RangeSlider from './RangeSlider'
+import Question from './Question'
+import { Fragment } from 'react';
 
 export default class Signup extends Component {
 
@@ -15,6 +18,8 @@ export default class Signup extends Component {
     lastName: '',
     country: '',
     levelOfEducation: '',
+    question1: 50,
+    question2: 50,
   }
 
   // go back to previous step
@@ -36,17 +41,20 @@ export default class Signup extends Component {
 
   render() {
     const { step } = this.state;
-    const { email, username, password, firstName, lastName, country, levelOfEducation } = this.state;
-    const values = { email, username, password, firstName, lastName, country, levelOfEducation }
+    const { email, username, password, firstName, lastName, country, levelOfEducation, question1, question2 } = this.state;
+    const values = { email, username, password, firstName, lastName, country, levelOfEducation, question1, question2 }
     
     switch(step) {
       case 1: 
         return (
-          <UserDetails 
-            nextStep={ this.nextStep }
-            handleChange={ this.handleChange }
-            values={ values }
-          />
+          <Fragment>
+            <UserDetails 
+              nextStep={ this.nextStep }
+              handleChange={ this.handleChange }
+              values={ values }
+            />
+            {/*<RangeSlider />*/}
+          </Fragment>
         )
       case 2: 
         return (
@@ -58,6 +66,28 @@ export default class Signup extends Component {
           />
         )
       case 3: 
+        return (
+          <Question 
+            questionAttribute={ 'question1' }
+            questionStatement={ 'What is your age?' }
+            prevStep={ this.prevStep }
+            nextStep={ this.nextStep }
+            handleChange={ this.handleChange }
+            values={ values }
+          />
+        )
+      case 4: 
+        return (
+          <Question 
+            questionAttribute={ 'question2' }
+            questionStatement={ 'How many pets do you have?' }
+            prevStep={ this.prevStep }
+            nextStep={ this.nextStep }
+            handleChange={ this.handleChange }
+            values={ values }
+          />
+        )
+      case 5: 
           return (
             <Confirmation 
               prevStep={ this.prevStep }
@@ -65,7 +95,7 @@ export default class Signup extends Component {
               values={ values }
             />
           )
-        case 4: 
+      case 6: 
           return (
             <Success />
           )
